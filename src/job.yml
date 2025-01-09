@@ -7,14 +7,14 @@ command: >-
   --reg_rate ${{inputs.reg_rate}}
 inputs:
   training_data:
-    type: uri_folder
+    type: str
     path: azureml:diabetes-dev-folder
   reg_rate:
     type: float
     default: 0.01
 outputs:
   output_model:
-    type: uri_folder
+    type: str
 environment: azureml:AzureML-sklearn-024-ubuntu18_04-py37-cpu
 compute: azureml:aml-instance
 experiment_name: diabetes-dev-job
