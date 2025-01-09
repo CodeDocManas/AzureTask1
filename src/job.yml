@@ -3,7 +3,7 @@ type: command
 code: model
 command: >- 
   python train.py
-  --diabetes-dev.csv
+  --diabetes ${{inputs.training_data}} 
   --reg_rate ${{inputs.reg_rate}}
 inputs:
   training_data: 
@@ -12,7 +12,7 @@ inputs:
   reg_rate: 0.01
 environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
 compute: azureml:aml-instance
-experiment_name: diabetes-dev-folder
+experiment_name: diabetes-dev-job
 description: Train a classification model on diabetes data using a registered dataset as an input.
 
 
