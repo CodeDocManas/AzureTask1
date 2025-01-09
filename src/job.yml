@@ -1,4 +1,5 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+type: command 
 code: model
 command: >- 
   python train.py
