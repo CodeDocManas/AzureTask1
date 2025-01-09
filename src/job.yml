@@ -12,7 +12,7 @@ inputs:
   reg_rate:
     type: number
     default: 0.01
-environment: azureml:sklearn_024_ubuntu18_04_py37_cpu:1
+environment: azureml:sklearn_024_ubuntu18_04_py37_cpu@latest
 compute: azureml:aml-instance
 experiment_name: diabetes-dev-job
 description: Train a classification model on diabetes data using a registered dataset as an input.
