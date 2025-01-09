@@ -16,7 +16,7 @@ inputs:
     type: uri_folder
 environment: azureml:AzureML-sklearn-024-ubuntu18_04-py37-cpu
 compute: azureml:aml-instance
-experiment_name: diabetes-dev-folder
+experiment_name: diabetes-dev-job
 description: Train a classification model on diabetes data using a registered dataset as an input.
 
 
