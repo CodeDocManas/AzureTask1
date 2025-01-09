@@ -1,3 +1,4 @@
+type : command
 code: model
 command: >- 
   python train.py
