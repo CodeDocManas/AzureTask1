@@ -3,7 +3,6 @@ code: model
 command: >- 
   python train.py
   --diabetes ${{inputs.diabetes}}
-  --reg_rate 0.01
 inputs:
   diabetes: 
     type: uri_folder 
