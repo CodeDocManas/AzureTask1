@@ -3,7 +3,7 @@ type: command
 code: model
 command: >- 
   python train.py
-  --diabetes ${{inputs.training_data}} 
+  --input-data ${{inputs.training_data}} 
   --output-model ${{outputs.output_model}}
   --reg_rate ${{inputs.reg_rate}}
 inputs:
