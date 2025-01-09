@@ -4,6 +4,7 @@ code: model
 command: >- 
   python train.py
   --diabetes ${{inputs.training_data}} 
+  --output-model ${{outputs.output_model}}
   --reg_rate ${{inputs.reg_rate}}
 inputs:
   training_data: 
@@ -12,6 +13,9 @@ inputs:
   reg_rate: 
     type: number 
     default: 0.01
+  outputs: 
+    output_model: 
+    type: uri_folder
 environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
 compute: azureml:aml-instance
 experiment_name: diabetes-dev-folder
