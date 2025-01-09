@@ -9,7 +9,7 @@ command: >-
 inputs:
   training_data: 
     type: uri_folder 
-    path: experimentation/data
+    path: azureml:diabetes-dev-folder
   reg_rate: 
     type: number 
     default: 0.01
