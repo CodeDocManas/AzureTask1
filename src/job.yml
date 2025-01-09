@@ -1,4 +1,3 @@
-$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 code: model
 command: >- 
   python train.py
@@ -12,6 +11,7 @@ environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
 compute: azureml:aml-instance
 experiment_name: diabetes-dev-folder
 description: Train a classification model on diabetes data using a registered dataset as an input.
+
 
 
 
