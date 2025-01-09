@@ -1,23 +1,22 @@
-$schema: https://azuremlschemas.azureedge.net/latest/environment.schema.json
-type: command 
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+type: command
 code: model
-command: >- 
+command: >-
   python train.py
-  --training_data ${{inputs.training_data}} 
-  --output-model ${{outputs.output_model}}
+  --training_data ${{inputs.training_data}}
   --reg_rate ${{inputs.reg_rate}}
 inputs:
-  training_data: 
+  training_data:
     type: uri_folder 
     path: azureml:diabetes-dev-folder
-  reg_rate: 0.01
-  outputs: 
-    output_model: 
-    type: uri_folder
-environment: azureml:AzureML-sklearn-024-ubuntu18_04-py37-cpu
+  reg_rate:
+    type: number
+    default: 0.01
+environment: azureml:sklearn_024_ubuntu18_04_py37_cpu:1
 compute: azureml:aml-instance
 experiment_name: diabetes-dev-job
 description: Train a classification model on diabetes data using a registered dataset as an input.
+
 
 
 
