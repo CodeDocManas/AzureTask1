@@ -55,7 +55,7 @@ def parse_args():
 
     # add arguments
     parser.add_argument("--training_data", dest='training_data',
-                        type=uri_folder)
+                        type=str)
     parser.add_argument("--reg_rate", dest='reg_rate',
                         type=float, default=0.01)
 
