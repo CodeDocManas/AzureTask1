@@ -1,8 +1,0 @@
-name: sklearn-024-ubuntu18_04-py37-cpu 
-dependencies: 
-  - python=3.7 
-  - scikit-learn=0.24 
-  - pip: 
-    - pandas 
-channels: 
-  - conda-forge
