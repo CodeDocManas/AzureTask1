@@ -34,8 +34,8 @@ def get_csvs_df(path):
     return pd.concat((pd.read_csv(f) for f in csv_files), sort=False)
 
 def split_data(df):
-    X = df.drop('target', axis=1)  # Assuming 'target' is the label column
-    y = df['target']
+    X = df.drop('Diabetic', axis=1)  # Assuming 'target' is the label column
+    y = df['Diabetic']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
     return X_train, X_test, y_train, y_test
 
