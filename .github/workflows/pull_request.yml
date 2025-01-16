@@ -1,0 +1,27 @@
+name: Pull Request Workflow
+
+on: 
+  pull_request: 
+    branches: 
+      - main
+
+jobs:
+  train: 
+    runs-on: ubuntu_latest
+
+    steps: 
+      - name: Checkout code
+        uses: actions/checkout@main
+
+      - name: Install az ml extension
+        run: echo "az extension add -n ml -y"
+
+      - name: Azure login 
+        uses: azure/login@v1
+        with: 
+          creds: ${{secrets.AZURE_CREDENTIALS}}
+
+      - name: Run ML job
+        run: echo "az ml job create --file pull_request.yml -w 'mlw-dp100-labs' -g 'rg-dp100-labs'"
+
+        
