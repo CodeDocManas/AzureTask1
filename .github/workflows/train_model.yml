@@ -34,7 +34,7 @@ jobs:
     - name: Azure CLI Login
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.Azure_Credentials }}
+        creds: ${{ secrets.AZURE_CRENDENTIALS }}
 
     - name: Train model in development environment
       run: |
@@ -80,7 +80,7 @@ jobs:
     - name: Azure CLI Login
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.Azure_Credentials }}
+        creds: ${{ secrets.AZURE_CRENDENTIALS }}
 
     - name: Train model in production environment
       run: |
