@@ -23,18 +23,27 @@ jobs:
       run: |
         pip install -r requirements.txt
 
+    - name: Install Azure ML extension
+      run: |
+        az extension add --name ml
+
+    - name: Configure preview extension installation
+      run: |
+        az config set extension.dynamic_install_allow_preview=true
+
     - name: Train model in development environment
       run: |
-        az ml job create --file jobs/job.yml --set defaults.environment=development \
-          --inputs data_folder=azureml:diabetes-dev-folder --stream \
-          -g "rg-dp100-labs" -w "mlw-dp100-labs"
+        az ml job create --file jobs/job.yml \
+          --resource-group rg-dp100-labs --workspace-name mlw-dp100-labs \
+          --set inputs.training_data=azureml:diabetes-dev-folder@latest --stream
+
     - name: Check job status
       id: check_experiment_status
       run: |
-        job_id=$(az ml job create --file jobs/job.yml --set defaults.environment=development \
-          --inputs data_folder=azureml:diabetes-dev-folder --query id -o tsv --stream \
-          -g "rg-dp100-labs" -w "mlw-dp100-labs"        
-          echo "experiment_job_id=$job_id" >> $GITHUB_ENV
+        job_id=$(az ml job create --file jobs/job.yml \
+          --resource-group rg-dp100-labs --workspace-name mlw-dp100-labs \
+          --set inputs.training_data=azureml:diabetes-dev-folder@latest --query id -o tsv --stream)
+        echo "experiment_job_id=$job_id" >> $GITHUB_ENV
 
   production:
     name: Train Model in Production
@@ -55,16 +64,24 @@ jobs:
       run: |
         pip install -r requirements.txt
 
+    - name: Install Azure ML extension
+      run: |
+        az extension add --name ml
+
+    - name: Configure preview extension installation
+      run: |
+        az config set extension.dynamic_install_allow_preview=true
+
     - name: Train model in production environment
       run: |
-        az ml job create --file jobs/job.yml --set defaults.environment=production \
-          --inputs data_folder=azureml:diabetes-prod-folder --stream \
-          -g "rg-dp100-labs" -w "mlw-dp100-labs"
+        az ml job create --file jobs/job.yml \
+          --resource-group rg-dp100-labs --workspace-name mlw-dp100-labs \
+          --set inputs.training_data=azureml:diabetes-prod-folder@latest --stream
 
     - name: Check job status
       id: check_production_status
       run: |
-        job_id=$(az ml job create --file jobs/job.yml --set defaults.environment=production \
-          --inputs data_folder=azureml:diabetes-prod-folder --query id -o tsv --stream \
-          -g "rg-dp100-labs" -w "mlw-dp100-labs"        
-          echo "production_job_id=$job_id" >> $GITHUB_ENV
+        job_id=$(az ml job create --file jobs/job.yml \
+          --resource-group rg-dp100-labs --workspace-name mlw-dp100-labs \
+          --set inputs.training_data=azureml:diabetes-prod-folder@latest --query id -o tsv --stream)
+        echo "production_job_id=$job_id" >> $GITHUB_ENV
