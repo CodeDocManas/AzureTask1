@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
-      uses: actions/checkout@main
+      uses: actions/checkout@v2
     - name: Install az ml extension
       run: az extension add -n ml -y
     - name: Azure login
@@ -16,6 +16,6 @@ jobs:
       with:
         creds: ${{secrets.REPOSITORY}}
     - name: Run ML job 
-      run: az ml job create --file .github/workflows/job.yml -w "mlw-dp100-labs" -g "rg-dp100-labs"
+      run: az ml job create --file job.yml -w "mlw-dp100-labs" -g "rg-dp100-labs"
 
 
