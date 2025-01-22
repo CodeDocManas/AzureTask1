@@ -16,6 +16,6 @@ jobs:
       with:
         creds: ${{secrets.REPOSITORY}}
     - name: Run ML job 
-      run: az ml job create --file AzureTask1/src/job.yml -w "mlw-dp100-labs" -g "rg-dp100-labs"
+      run: az ml job create --file .github/workflows/job.yml -w "mlw-dp100-labs" -g "rg-dp100-labs"
 
 
